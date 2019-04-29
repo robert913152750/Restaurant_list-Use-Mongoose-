@@ -33,6 +33,7 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
 //routes setting
+//首頁
 app.get("/", (req, res) => {
   Restaurant.find((err, restaurants) => {
     if (err) return console.error(err);
@@ -40,12 +41,38 @@ app.get("/", (req, res) => {
   });
 });
 
+//單筆餐廳詳細內容
 app.get("/restaurants/:id", (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err);
     console.log(restaurant);
     return res.render("show", { restaurant: restaurant });
   });
+});
+
+//新增頁面
+app.get("/restaurant/new", (req, res) => {
+  res.send("new page");
+});
+
+//新增一筆餐廳資料
+app.post("/restaurants", (req, res) => {
+  res.send("create new page");
+});
+
+//修改餐廳頁面
+app.get("/restaurants/:id/edit", (req, res) => {
+  res.send("edit page");
+});
+
+//修改餐廳
+app.put("/restaurants/:id", (req, res) => {
+  res.send("edit restaurant");
+});
+
+//刪除餐廳
+app.delete("/restaurants/:id/delete", (req, res) => {
+  res.send("delete restaurant");
 });
 
 // app.get("/search", (req, res) => {
