@@ -24,7 +24,6 @@ const Restaurant = require("./models/restaurant");
 
 //require express-handlebars here
 const exphbs = require("express-handlebars");
-const restaurantList = require("./restaurant.json");
 
 //settting template engine
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
