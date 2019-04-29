@@ -48,18 +48,18 @@ app.get("/restaurants/:id", (req, res) => {
   });
 });
 
-app.get("/search", (req, res) => {
-  const keyword = req.query.keyword;
-  const restaurantName = restaurantList.results.filter(restaurant => {
-    return restaurant.name.toLowerCase().includes(keyword.toLowerCase());
-  });
-  const restaurantNameCategory = restaurantList.results.filter(restaurant => {
-    return restaurant.category.toLowerCase().includes(keyword.toLowerCase());
-  });
-  const restaurants = restaurantName.concat(restaurantNameCategory);
-  console.log(restaurants);
-  res.render("index", { restaurants: restaurants, keyword: keyword });
-});
+// app.get("/search", (req, res) => {
+//   const keyword = req.query.keyword;
+//   const restaurantName = restaurantList.results.filter(restaurant => {
+//     return restaurant.name.toLowerCase().includes(keyword.toLowerCase());
+//   });
+//   const restaurantNameCategory = restaurantList.results.filter(restaurant => {
+//     return restaurant.category.toLowerCase().includes(keyword.toLowerCase());
+//   });
+//   const restaurants = restaurantName.concat(restaurantNameCategory);
+//   console.log(restaurants);
+//   res.render("index", { restaurants: restaurants, keyword: keyword });
+// });
 
 //start and listen on the Express server
 app.listen(port, () => {
