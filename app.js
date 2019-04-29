@@ -34,14 +34,18 @@ app.use(express.static("public"));
 
 //routes setting
 app.get("/", (req, res) => {
-  res.render("index", { restaurants: restaurantList.results });
+  Restaurant.find((err, restaurants) => {
+    if (err) return console.error(err);
+    return res.render("index", { restaurants: restaurants });
+  });
 });
 
-app.get("/restaurants/:restaurant_id", (req, res) => {
-  const restaurant = restaurantList.results.filter(
-    restaurant => restaurant.id.toString() === req.params.restaurant_id
-  );
-  res.render("show", { restaurant: restaurant[0] });
+app.get("/restaurants/:id", (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err);
+    console.log(restaurant);
+    return res.render("show", { restaurant: restaurant });
+  });
 });
 
 app.get("/search", (req, res) => {
