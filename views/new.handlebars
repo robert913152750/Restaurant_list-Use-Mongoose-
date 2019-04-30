@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row m-5">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <div class="card col-sm-12 text-center">
+        <div class="card-header text-info">
+          Add New Restaurant
+        </div>
+
+        <div class="card-body">
+          <form action="/restaurants" method="POST">
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label text-info">餐廳名字</label>
+              <div class="col-sm-9">
+                <input type="text" name="name" class="form-control border border-info" placeholder="Ex：阿財鍋貼">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label text-info">類別</label>
+              <div class="col-sm-9">
+                <input type="text" name="category" class="form-control border border-info" placeholder="Ex：中東料理">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label text-info">地址</label>
+              <div class="col-sm-9">
+                <input type="text" name="address" class="form-control border border-info" placeholder="Ex：台北市xx路xx號">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label text-info">電話</label>
+              <div class="col-sm-9">
+                <input type="text" name="phone" class="form-control border border-info" placeholder="Ex：02 1234 5678">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label text-info">評分(0~5)</label>
+              <div class="col-sm-9">
+                <input type="number" name="score" min="0" step="0.1" max="5" class="form-control border border-info"
+                  placeholder="Ex：4.5">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label text-info">圖片網址</label>
+              <div class="col-sm-9">
+                <input type="text" name="image" class="form-control border border-info"
+                  placeholder="Ex：http://www.image.com">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label text-info">描述</label>
+              <div class="col-sm-9">
+                <textarea name="descrip" class="form-control border border-info" cols="30" rows="5"
+                  placeholder="Ex：特色小吃、環境服務等等"></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-4"></div>
+              <div class="col-sm-4"></div>
+              <div class="col-sm-4">
+                <button type="submit" class="btn btn-info">送出</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-sm-2"></div>
+
+
+  </div>
+
+
+</div>

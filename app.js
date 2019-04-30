@@ -50,9 +50,9 @@ app.get("/restaurants/:id", (req, res) => {
   });
 });
 
-//新增頁面
+//新增餐廳頁面
 app.get("/restaurant/new", (req, res) => {
-  res.send("new page");
+  res.render("new");
 });
 
 //新增一筆餐廳資料
