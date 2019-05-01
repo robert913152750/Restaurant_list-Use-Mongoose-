@@ -3,6 +3,10 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+
+//設定 bodyParser
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //設定連線至moongoose
 mongoose.connect("mongodb://localhost/restaurant", { useNewUrlParser: true });
@@ -45,7 +49,6 @@ app.get("/", (req, res) => {
 app.get("/restaurants/:id", (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err);
-    console.log(restaurant);
     return res.render("show", { restaurant: restaurant });
   });
 });
@@ -57,7 +60,20 @@ app.get("/restaurant/new", (req, res) => {
 
 //新增一筆餐廳資料
 app.post("/restaurants", (req, res) => {
-  res.send("create new page");
+  const restaurant = Restaurant({
+    name: req.body.name,
+    category: req.body.category,
+    image: req.body.image,
+    location: req.body.location,
+    phone: req.body.phone,
+    rating: req.body.rating,
+    description: req.body.description
+  });
+  restaurant.save(err => {
+    if (err) return console.error(err);
+    const id = encodeURI(restaurant.id);
+    return res.redirect("/restaurants/" + id);
+  });
 });
 
 //修改餐廳頁面
