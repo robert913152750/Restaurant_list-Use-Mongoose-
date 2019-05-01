@@ -46,7 +46,7 @@ app.get("/", (req, res) => {
 });
 
 //單筆餐廳詳細內容
-app.get("/restaurants/:id", (req, res) => {
+app.get("/restaurant/:id", (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err);
     return res.render("show", { restaurant: restaurant });
@@ -54,8 +54,8 @@ app.get("/restaurants/:id", (req, res) => {
 });
 
 //新增餐廳頁面
-app.get("/restaurant/new", (req, res) => {
-  res.render("new");
+app.get("/restaurants/new", (req, res) => {
+  return res.render("new");
 });
 
 //新增一筆餐廳資料
@@ -65,6 +65,7 @@ app.post("/restaurants", (req, res) => {
     category: req.body.category,
     image: req.body.image,
     location: req.body.location,
+    google_map: req.body.google_map,
     phone: req.body.phone,
     rating: req.body.rating,
     description: req.body.description
@@ -72,22 +73,39 @@ app.post("/restaurants", (req, res) => {
   restaurant.save(err => {
     if (err) return console.error(err);
     const id = encodeURI(restaurant.id);
-    return res.redirect("/restaurants/" + id);
+    return res.redirect(`/restaurant/${restaurant.id}`);
   });
 });
 
 //修改餐廳頁面
-app.get("/restaurants/:id/edit", (req, res) => {
-  res.send("edit page");
+app.get("/restaurant/:id/edit", (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err);
+    return res.render("edit", { restaurant: restaurant });
+  });
 });
 
 //修改餐廳
-app.put("/restaurants/:id", (req, res) => {
-  res.send("edit restaurant");
+app.post("/restaurant/:id", (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) console.error(err);
+    restaurant.name = req.body.name;
+    restaurant.category = req.body.category;
+    restaurant.image = req.body.image;
+    restaurant.location = req.body.location;
+    restaurant.google_map = req.body.google_map;
+    restaurant.phone = req.body.phone;
+    restaurant.rating = req.body.rating;
+    restaurant.description = req.body.description;
+    restaurant.save(err => {
+      if (err) return comsole.error(err);
+      return res.redirect(`/restaurant/${req.params.id}`);
+    });
+  });
 });
 
 //刪除餐廳
-app.delete("/restaurants/:id/delete", (req, res) => {
+app.delete("/restaurant/:id/delete", (req, res) => {
   res.send("delete restaurant");
 });
 

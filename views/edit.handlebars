@@ -4,61 +4,62 @@
     <div class="col-sm-8">
       <div class="card col-sm-12 text-center">
         <div class="card-header text-info">
-          Add New Restaurant
+          Edit Your Restaurant
         </div>
 
         <div class="card-body">
-          <form action="/restaurants" method="POST">
+          <form action="/restaurant/{{{restaurant.id}}}" method="POST">
             <div class="form-group row">
               <label class="col-sm-2 col-form-label text-info">餐廳名字</label>
               <div class="col-sm-9">
-                <input type="text" name="name" class="form-control border border-info" placeholder="Ex：阿財鍋貼">
+                <input type="text" name="name" class="form-control border border-info" value="{{{restaurant.name}}}">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label text-info">類別</label>
               <div class="col-sm-9">
-                <input type="text" name="category" class="form-control border border-info" placeholder="Ex：中東料理">
+                <input type="text" name="category" class="form-control border border-info"
+                  value="{{{restaurant.category}}}">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label text-info">地址</label>
               <div class="col-sm-9">
-                <input type="text" name="location" class="form-control border border-info" placeholder="Ex：台北市xx路xx號">
+                <input type="text" name="location" class="form-control border border-info"
+                  value="{{{restaurant.location}}}">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label text-info">Google Map 網址</label>
               <div class="col-sm-9">
                 <input type="text" name="google_map" class="form-control border border-info"
-                  placeholder="Ex：http://www.google-map.com">
+                  value="{{{restaurant.google_map}}}">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label text-info">電話</label>
               <div class="col-sm-9">
-                <input type="text" name="phone" class="form-control border border-info" placeholder="Ex：02 1234 5678">
+                <input type="text" name="phone" class="form-control border border-info" value="{{{restaurant.phone}}}">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label text-info">評分(0~5)</label>
               <div class="col-sm-9">
                 <input type="number" name="rating" min="0" step="0.1" max="5" class="form-control border border-info"
-                  placeholder="Ex：4.5">
+                  value="{{{restaurant.rating}}}">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label text-info">圖片網址</label>
               <div class="col-sm-9">
-                <input type="text" name="image" class="form-control border border-info"
-                  placeholder="Ex：http://www.image.com">
+                <input type="text" name="image" class="form-control border border-info" value="{{{restaurant.image}}}">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label text-info">描述</label>
               <div class="col-sm-9">
-                <textarea name="description" class="form-control border border-info" cols="30" rows="5"
-                  placeholder="Ex：特色小吃、環境服務等等"></textarea>
+                <textarea name="description" class="form-control border border-info" cols="30"
+                  rows="5">{{restaurant.description}}</textarea>
               </div>
             </div>
             <div class="form-group row">
