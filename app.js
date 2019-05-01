@@ -105,8 +105,14 @@ app.post("/restaurant/:id", (req, res) => {
 });
 
 //刪除餐廳
-app.delete("/restaurant/:id/delete", (req, res) => {
-  res.send("delete restaurant");
+app.post("/restaurant/:id/delete", (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err);
+    restaurant.remove(err => {
+      if (err) return console.error(err);
+      return res.redirect("/");
+    });
+  });
 });
 
 // app.get("/search", (req, res) => {

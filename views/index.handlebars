@@ -27,24 +27,21 @@
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
             <div class="card-body p-3">
               <h6 class="card-title mb-1">{{this.name}}</h6>
-
               <div class="restaurant-category mb-1">
                 <i class="fas fa-utensils pr-2"></i> {{this.category}}
               </div>
-
               <span class="badge badge-pill badge-danger font-weight-normal">
                 {{this.rating}}
                 <i class="fas fa-star fa-xs"></i>
               </span>
               <div class="button">
                 <a href="/restaurant/{{{this.id}}}/edit">
-                  <button type="button" class="btn btn-outline-primary btn-sm mt-2">Edit</button>
+                  <button type="button" class="btn btn-outline-primary btn-sm m-1 float-left">Edit</button>
                 </a>
-                <a href="#">
-                  <button type="button" class="btn btn-outline-danger btn-sm mt-2">Delete</button>
-                </a>
+                <form action="/restaurant/{{{this.id}}}/delete" method="POST">
+                  <button type="summit" class="btn btn-outline-danger btn-sm m-1 float-left">Delete</button>
+                </form>
               </div>
-
             </div>
           </div>
         </a>
