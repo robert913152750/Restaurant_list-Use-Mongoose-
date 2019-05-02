@@ -117,10 +117,10 @@ app.post("/restaurant/:id/delete", (req, res) => {
 
 // app.get("/search", (req, res) => {
 //   const keyword = req.query.keyword;
-//   const restaurantName = restaurantList.results.filter(restaurant => {
+//   const restaurantName = Restaurant.filter(restaurant => {
 //     return restaurant.name.toLowerCase().includes(keyword.toLowerCase());
 //   });
-//   const restaurantNameCategory = restaurantList.results.filter(restaurant => {
+//   const restaurantNameCategory = Restaurant.filter(restaurant => {
 //     return restaurant.category.toLowerCase().includes(keyword.toLowerCase());
 //   });
 //   const restaurants = restaurantName.concat(restaurantNameCategory);
